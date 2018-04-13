@@ -7,18 +7,24 @@
 //
 
 import UIKit
+import TextFieldFloatingPlaceholder
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet var textFieldFloatingPlaceholder: TextFieldFloatingPlaceholder!
+    
+    @IBOutlet var viewTap: UITapGestureRecognizer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        textFieldFloatingPlaceholder.validation = { $0.count > 0 }
+        
+        viewTap.addTarget(self, action: #selector(ViewController.tap))
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    @objc func tap() {
+        textFieldFloatingPlaceholder.endEditing(true)
     }
-
 }
 
