@@ -22,26 +22,46 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="place holder" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qSE-N8-uJ3" customClass="TextFieldFloatingPlaceholder" customModule="TextFieldFloatingPlaceholder">
-                                <rect key="frame" x="36" y="50" width="303" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first text field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qSE-N8-uJ3" customClass="TextFieldFloatingPlaceholder" customModule="TextFieldFloatingPlaceholder">
+                                <rect key="frame" x="36" y="50" width="303" height="36"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="second text field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vpl-Xa-1XX" customClass="TextFieldFloatingPlaceholder" customModule="TextFieldFloatingPlaceholder">
+                                <rect key="frame" x="36" y="116" width="303" height="31"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="third text field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ccZ-j6-2Se" customClass="TextFieldFloatingPlaceholder" customModule="TextFieldFloatingPlaceholder">
+                                <rect key="frame" x="36" y="177" width="303" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ccZ-j6-2Se" secondAttribute="trailing" constant="20" id="9dj-Wd-y6g"/>
+                            <constraint firstItem="vpl-Xa-1XX" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="UxF-bO-y0s"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qSE-N8-uJ3" secondAttribute="trailing" constant="20" id="WFf-Rc-SJT"/>
+                            <constraint firstItem="vpl-Xa-1XX" firstAttribute="top" secondItem="qSE-N8-uJ3" secondAttribute="bottom" constant="30" id="WOb-Nl-rqy"/>
                             <constraint firstItem="qSE-N8-uJ3" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="30" id="iRA-ZP-9ju"/>
+                            <constraint firstItem="ccZ-j6-2Se" firstAttribute="top" secondItem="vpl-Xa-1XX" secondAttribute="bottom" constant="30" id="kVM-0d-vXX"/>
                             <constraint firstItem="qSE-N8-uJ3" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="s9l-mC-Rta"/>
+                            <constraint firstItem="ccZ-j6-2Se" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="sNc-LQ-GYe"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vpl-Xa-1XX" secondAttribute="trailing" constant="20" id="y7q-r7-zMu"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="jBo-cG-tix" appends="YES" id="y4y-BV-tHz"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="textFieldFloatingPlaceholder" destination="qSE-N8-uJ3" id="fNJ-IV-NjV"/>
+                        <outlet property="firstTextField" destination="qSE-N8-uJ3" id="Y8A-rS-6tR"/>
+                        <outlet property="secondTextField" destination="vpl-Xa-1XX" id="gJK-TW-IFi"/>
+                        <outlet property="thirdTextField" destination="ccZ-j6-2Se" id="XRH-n5-MKg"/>
                         <outlet property="viewTap" destination="jBo-cG-tix" id="Eyb-pA-eJf"/>
                     </connections>
                 </viewController>
