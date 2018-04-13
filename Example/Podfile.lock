@@ -1,16 +1,16 @@
 PODS:
-  - TextFieldFloatingPlaceholder (1.0.0)
+  - TextFieldFloatingPlaceholder (1.0.1)
 
 DEPENDENCIES:
   - TextFieldFloatingPlaceholder (from `../`)
 
 EXTERNAL SOURCES:
   TextFieldFloatingPlaceholder:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  TextFieldFloatingPlaceholder: bb8530791cd5c736c1103da373f0c0a7571b9b51
+  TextFieldFloatingPlaceholder: 769a1a7a3a74436fc5642d5529b7d61c62616881
 
 PODFILE CHECKSUM: e67462d4ab47b6bb6bc77393e01f04fb9bf6c9e1
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0
