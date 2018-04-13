@@ -9,6 +9,9 @@ open class TextFieldFloatingPlaceholder: UITextField {
     /// Placeholder min font size
     open var floatingPlaceholderMinFontSize: CGFloat = 10
     
+    /// Placeholder animation duration
+    open var floatintPlaceholderDuration: Double = 0.2
+    
     /// Placeholder color
     open var floatingPlaceholderColor: UIColor = .lightGray
     
@@ -54,6 +57,9 @@ open class TextFieldFloatingPlaceholder: UITextField {
     /// Whether placeholder is above
     private var isFloat = false
     
+    /// Whether placehlder should be avove
+    private var shouldFloat = false
+    
     /// set up size of self
     override open var intrinsicContentSize: CGSize {
         let intrinsicContentSize = super.intrinsicContentSize
@@ -78,8 +84,6 @@ open class TextFieldFloatingPlaceholder: UITextField {
         super.layoutSubviews()
         invalidateIntrinsicContentSize()
         
-        changeBottomLineColor()
-        
         // When editing is started in case character input is not made
         if isFirstResponder && text == "" && !isFloat {
             placeholder(toFloat: true)
@@ -91,8 +95,10 @@ open class TextFieldFloatingPlaceholder: UITextField {
         
         // When an initial value is given to textfield
         if text != "" && !isFloat {
-            placeholder(toFloat: true, animated: false)
+            placeholder(toFloat: true)
         }
+        
+        changeBottomLineColor()
     }
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
@@ -158,17 +164,14 @@ open class TextFieldFloatingPlaceholder: UITextField {
     }
 
     /// Move placeholder label
-    private func placeholder(toFloat: Bool, animated: Bool = true) {
+    private func placeholder(toFloat: Bool) {
         isFloat = toFloat
         floatingPlaceholderBottomConstraint.constant = toFloat ? -bounds.height + floatingPlaceholderLabel.frame.height : -floatingPlaceholderBottomMargin
         
         let ratio = toFloat ? floatingPlaceholderMinFontSize / font!.pointSize : font!.pointSize / floatingPlaceholderMinFontSize
         let leading = -floatingPlaceholderLabel.frame.width * (1 - ratio) / 2 + leftPadding
         floatingPlaceholderLeadingConstraint.constant = toFloat ? leading : leftPadding
-        UIView.animate(withDuration: animated ? 0.5 : 0, delay: 0, options: .curveEaseIn, animations: {
-            self.floatingPlaceholderLabel.transform = self.floatingPlaceholderLabel.transform.scaledBy(x: ratio, y: ratio)
-            self.layoutIfNeeded()
-        })
+        shouldFloat = true
     }
 
     /// change bottom line color
@@ -202,8 +205,15 @@ open class TextFieldFloatingPlaceholder: UITextField {
     private func animateBottomLineColor() {
         underLineView?.backgroundColor = underLineColor
         underLineViewWidth?.constant = bounds.width
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveLinear, animations: {
+        
+        // placeholder size ratio
+        let ratio = isFloat ? floatingPlaceholderMinFontSize / font!.pointSize : font!.pointSize / floatingPlaceholderMinFontSize
+        UIView.animate(withDuration: floatintPlaceholderDuration, delay: 0, options: .curveLinear, animations: {
             self.layoutIfNeeded()
+            if self.shouldFloat {
+                self.floatingPlaceholderLabel.transform = self.floatingPlaceholderLabel.transform.scaledBy(x: ratio, y: ratio)
+                self.shouldFloat = false
+            }
         }, completion: { _ in
             self.underLineViewWidth?.constant = 0
             self.oldUnderLineView?.backgroundColor = self.underLineColor
