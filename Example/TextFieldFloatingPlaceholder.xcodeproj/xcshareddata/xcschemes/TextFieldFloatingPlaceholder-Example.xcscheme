@@ -53,6 +53,16 @@
                ReferencedContainer = "container:TextFieldFloatingPlaceholder.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D83CE40A208095C4000E5E8B"
+               BuildableName = "TextFieldFloatingPlaceholder iOSTests.xctest"
+               BlueprintName = "TextFieldFloatingPlaceholder iOSTests"
+               ReferencedContainer = "container:TextFieldFloatingPlaceholder.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
