@@ -6,6 +6,13 @@ open class TextFieldFloatingPlaceholder: UITextField {
     /// Placeholder rising up when editing
     private var floatingPlaceholderLabel: UILabel = UILabel()
     
+    /// enable change to font
+    open override var font: UIFont? {
+        didSet {
+            floatingPlaceholderLabel.font = font
+        }
+    }
+    
     /// Placeholder min font size
     open var floatingPlaceholderMinFontSize: CGFloat = 10
     
