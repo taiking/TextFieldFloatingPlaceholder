@@ -221,7 +221,7 @@ open class TextFieldFloatingPlaceholder: UITextField {
     }
     
     /// Set up picker if use picker
-    func setPicker(values: [String]) {
+    open func setPicker(values: [String]) {
         self.pickerStrings = values
         let picker = UIPickerView()
         picker.delegate = self
