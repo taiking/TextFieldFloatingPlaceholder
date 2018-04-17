@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TextFieldFloatingPlaceholder'
-  s.version          = '1.1.1'
+  s.version          = '1.1.3'
   s.summary          = 'Text Field with floating placeholder and under line changed by validation'
   s.description  = <<-DESC
   Text Field with floating placeholder and under line changed by validation
