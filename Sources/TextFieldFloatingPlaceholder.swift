@@ -102,7 +102,12 @@ open class TextFieldFloatingPlaceholder: UITextField {
         
         // When an initial value is given to textfield
         if text != "" && !isFloat {
-            placeholder(toFloat: true)
+            isFloat = true
+            DispatchQueue.main.async {
+                self.placeholder(toFloat: true)
+                self.animateBottomLineColor()
+            }
+            
         }
         
         changeBottomLineColor()
