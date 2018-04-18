@@ -37,6 +37,9 @@ open class TextFieldFloatingPlaceholder: UITextField {
     /// Validation function
     open var validation: ((String) -> Bool)?
     
+    /// Font size in picker label
+    open var fontSizeInPicker: CGFloat = 21
+    
     /// Padding to the left of text
     private var leftPadding: CGFloat = 9
     
@@ -274,7 +277,7 @@ extension TextFieldFloatingPlaceholder: UIPickerViewDelegate, UIPickerViewDataSo
         label.lineBreakMode = .byCharWrapping
         label.numberOfLines = 0
         label.text = text
-        label.font = font?.withSize(21)
+        label.font = font?.withSize(fontSizeInPicker)
         label.sizeToFit()
         return label
     }
