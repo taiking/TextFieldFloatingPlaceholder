@@ -255,11 +255,27 @@ extension TextFieldFloatingPlaceholder: UIPickerViewDelegate, UIPickerViewDataSo
         return pickerStrings.count
     }
 
-    public func pickerView(_: UIPickerView, titleForRow row: Int, forComponent _: Int) -> String? {
-        return pickerStrings[row]
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        return generateLabel(inPicker: pickerStrings[row])
     }
 
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        guard let maxString = pickerStrings.max(by: { $0.count < $1.count }) else { return 0 }
+        let label = generateLabel(inPicker: maxString)
+        return label.frame.height
+    }
+    
     public func pickerView(_: UIPickerView, didSelectRow row: Int, inComponent _: Int) {
         text = pickerStrings[row]
+    }
+    
+    private func generateLabel(inPicker text: String) -> UILabel {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 32, height: 0))
+        label.lineBreakMode = .byCharWrapping
+        label.numberOfLines = 0
+        label.text = text
+        label.font = font?.withSize(21)
+        label.sizeToFit()
+        return label
     }
 }
